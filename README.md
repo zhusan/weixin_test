@@ -11,6 +11,10 @@ weixin公众号接入测试
 
 公众号管理地址：http://zhusan.ap01.aws.af.cm/public_accounts
 
+    接入地址：Url: http://zhusan.ap01.aws.af.cm/weixin/:weixin_secret_key
+            Token:  :weixin_token	
+    微信公众号后台接入
+
 菜单管理地址:http://zhusan.ap01.aws.af.cm/diymenus  （scaffold界面）
 
 推送菜单到微信公众号：http://zhusan.ap01.aws.af.cm/diymenus/generate_menu
