@@ -9,7 +9,7 @@ weixin公众号接入测试
 
 线上地址：http://zhusan.ap01.aws.af.cm/
 
-公众号管理地址：http://zhusan.ap01.aws.af.cm/public_account
+公众号管理地址：http://zhusan.ap01.aws.af.cm/public_accounts
 
 菜单管理地址:http://zhusan.ap01.aws.af.cm/diymenus  （scaffold界面）
 
