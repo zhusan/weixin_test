@@ -1,0 +1,33 @@
+<h1>Listing diymenus</h1>
+
+<table>
+  <tr>
+    <th>Public account</th>
+    <th>Parent</th>
+    <th>Name</th>
+    <th>Key</th>
+    <th>Is show</th>
+    <th>Url</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @diymenus.each do |diymenu| %>
+  <tr>
+    <td><%= diymenu.public_account_id %></td>
+    <td><%= diymenu.parent_id %></td>
+    <td><%= diymenu.name %></td>
+    <td><%= diymenu.key %></td>
+    <td><%= diymenu.is_show %></td>
+    <td><%= diymenu.url %></td>
+    <td><%= link_to 'Show', diymenu %></td>
+    <td><%= link_to 'Edit', edit_diymenu_path(diymenu) %></td>
+    <td><%= link_to 'Destroy', diymenu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Diymenu', new_diymenu_path %>

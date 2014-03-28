@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @public_account.name %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%= @public_account.note %>
+</p>
+
+<p>
+  <b>Weixin secret key:</b>
+  <%= @public_account.weixin_secret_key %>
+</p>
+
+<p>
+  <b>Weixin token:</b>
+  <%= @public_account.weixin_token %>
+</p>
+
+
+<%= link_to 'Edit', edit_public_account_path(@public_account) %> |
+<%= link_to 'Back', public_accounts_path %>

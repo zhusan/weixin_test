@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Public account:</b>
+  <%= @diymenu.public_account_id %>
+</p>
+
+<p>
+  <b>Parent:</b>
+  <%= @diymenu.parent_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @diymenu.name %>
+</p>
+
+<p>
+  <b>Key:</b>
+  <%= @diymenu.key %>
+</p>
+
+<p>
+  <b>Is show:</b>
+  <%= @diymenu.is_show %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @diymenu.url %>
+</p>
+
+
+<%= link_to 'Edit', edit_diymenu_path(@diymenu) %> |
+<%= link_to 'Back', diymenus_path %>

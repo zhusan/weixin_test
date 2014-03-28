@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  public_account_id: 1
+  parent_id: 1
+  name: MyString
+  key: MyString
+  is_show: false
+  url: MyString
+
+two:
+  public_account_id: 1
+  parent_id: 1
+  name: MyString
+  key: MyString
+  is_show: false
+  url: MyString

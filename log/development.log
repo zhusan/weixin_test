@@ -1,0 +1,682 @@
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (18.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (9.6ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to AddWeixinSecretKeyAndWeixinTokenToPublicAccounts (20140328060155)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "public_accounts" ADD "weixin_secret_key" varchar(255)
+SQLite3::SQLException: no such table: public_accounts: ALTER TABLE "public_accounts" ADD "weixin_secret_key" varchar(255)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreatePublicAccounts (20140328060636)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "public_accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "note" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20140328060636')[0m
+  [1m[35m (15.4ms)[0m  commit transaction
+Migrating to AddWeixinSecretKeyAndWeixinTokenToPublicAccounts (20140328060646)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  ALTER TABLE "public_accounts" ADD "weixin_secret_key" varchar(255)
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "public_accounts" ADD "weixin_token" varchar(255)[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_public_accounts_on_weixin_secret_key" ON "public_accounts" ("weixin_secret_key")
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_public_accounts_on_weixin_token" ON "public_accounts" ("weixin_token")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140328060646')
+  [1m[36m (9.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+
+
+Started GET "/assets/rails.png" for 192.168.1.152 at 2014-03-28 14:12:24 +0800
+Connecting to database specified by database.yml
+Served asset /rails.png - 200 OK (6ms)
+
+
+Started GET "/puplic_accouts" for 192.168.1.152 at 2014-03-28 14:12:28 +0800
+
+ActionController::RoutingError (No route matches [GET] "/puplic_accouts"):
+  actionpack (3.2.11) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.11) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.11) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.3) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.3) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.11) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.3) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.11) lib/rails/engine.rb:479:in `call'
+  railties (3.2.11) lib/rails/application.rb:223:in `call'
+  rack (1.4.3) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.11) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.3) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.3) lib/rack/server.rb:268:in `start'
+  railties (3.2.11) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.11) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.11) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.11) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (2.0ms)
+
+
+Started GET "/puplic_accouts/show" for 192.168.1.152 at 2014-03-28 14:12:32 +0800
+
+ActionController::RoutingError (No route matches [GET] "/puplic_accouts/show"):
+  actionpack (3.2.11) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.11) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.11) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.3) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.3) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.11) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.3) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.11) lib/rails/engine.rb:479:in `call'
+  railties (3.2.11) lib/rails/application.rb:223:in `call'
+  rack (1.4.3) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.11) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.3) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.3) lib/rack/server.rb:268:in `start'
+  railties (3.2.11) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.11) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.11) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.11) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.1ms)
+
+
+Started GET "/weixin" for 192.168.1.152 at 2014-03-28 14:12:37 +0800
+
+ActionController::RoutingError (No route matches [GET] "/weixin"):
+  actionpack (3.2.11) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.11) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.11) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.3) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.3) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.11) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.3) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.11) lib/rails/engine.rb:479:in `call'
+  railties (3.2.11) lib/rails/application.rb:223:in `call'
+  rack (1.4.3) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.11) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.3) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.3) lib/rack/server.rb:268:in `start'
+  railties (3.2.11) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.11) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.11) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.11) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.3ms)
+
+
+Started GET "/puplic_accouts/1" for 192.168.1.152 at 2014-03-28 14:14:22 +0800
+
+ActionController::RoutingError (No route matches [GET] "/puplic_accouts/1"):
+  actionpack (3.2.11) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.11) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.11) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.3) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.3) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.11) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.3) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.11) lib/rails/engine.rb:479:in `call'
+  railties (3.2.11) lib/rails/application.rb:223:in `call'
+  rack (1.4.3) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.11) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.3) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.3) lib/rack/server.rb:268:in `start'
+  railties (3.2.11) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.11) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.11) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.11) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/puplic_accouts/1" for 192.168.1.152 at 2014-03-28 14:15:44 +0800
+
+ActionController::RoutingError (No route matches [GET] "/puplic_accouts/1"):
+  actionpack (3.2.11) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.11) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.11) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.3) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.3) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.11) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.3) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.11) lib/rails/engine.rb:479:in `call'
+  railties (3.2.11) lib/rails/application.rb:223:in `call'
+  rack (1.4.3) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.11) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.3) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.3) lib/rack/server.rb:268:in `start'
+  railties (3.2.11) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.11) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.11) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.11) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/puplic_accouts/1" for 192.168.1.152 at 2014-03-28 14:51:01 +0800
+Connecting to database specified by database.yml
+
+ActionController::RoutingError (No route matches [GET] "/puplic_accouts/1"):
+  actionpack (3.2.11) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.11) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.11) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.3) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.3) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.11) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.3) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.11) lib/rails/engine.rb:479:in `call'
+  railties (3.2.11) lib/rails/application.rb:223:in `call'
+  rack (1.4.3) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.11) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.3) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.3) lib/rack/server.rb:268:in `start'
+  railties (3.2.11) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.11) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.11) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.11) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.1ms)
+
+
+Started GET "/puplic_accouts" for 192.168.1.152 at 2014-03-28 14:51:09 +0800
+
+ActionController::RoutingError (No route matches [GET] "/puplic_accouts"):
+  actionpack (3.2.11) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.11) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.11) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.3) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.3) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.11) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.3) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.11) lib/rails/engine.rb:479:in `call'
+  railties (3.2.11) lib/rails/application.rb:223:in `call'
+  rack (1.4.3) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.11) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.3) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.3) lib/rack/server.rb:268:in `start'
+  railties (3.2.11) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.11) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.11) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.11) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/puplic_accouts" for 192.168.1.152 at 2014-03-28 14:51:16 +0800
+
+ActionController::RoutingError (No route matches [GET] "/puplic_accouts"):
+  actionpack (3.2.11) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.11) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.11) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.3) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.3) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.11) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.3) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.11) lib/rails/engine.rb:479:in `call'
+  railties (3.2.11) lib/rails/application.rb:223:in `call'
+  rack (1.4.3) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.11) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.3) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.3) lib/rack/server.rb:268:in `start'
+  railties (3.2.11) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.11) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.11) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.11) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/puplic_accounts" for 192.168.1.152 at 2014-03-28 14:51:48 +0800
+
+ActionController::RoutingError (No route matches [GET] "/puplic_accounts"):
+  actionpack (3.2.11) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.11) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.11) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.3) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.3) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.11) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.3) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.11) lib/rails/engine.rb:479:in `call'
+  railties (3.2.11) lib/rails/application.rb:223:in `call'
+  rack (1.4.3) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.11) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.3) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.3) lib/rack/server.rb:268:in `start'
+  railties (3.2.11) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.11) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.11) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.11) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.1ms)
+
+
+Started GET "//public_accounts" for 192.168.1.152 at 2014-03-28 14:52:07 +0800
+Processing by PublicAccountsController#index as HTML
+  [1m[36mPublicAccount Load (0.1ms)[0m  [1mSELECT "public_accounts".* FROM "public_accounts" [0m
+  Rendered public_accounts/index.html.erb within layouts/application (2.4ms)
+Compiled public_accounts.css  (3ms)  (pid 20711)
+Compiled scaffolds.css  (12ms)  (pid 20711)
+Compiled application.css  (21ms)  (pid 20711)
+Compiled jquery.js  (3ms)  (pid 20711)
+Compiled jquery_ujs.js  (0ms)  (pid 20711)
+Compiled public_accounts.js  (197ms)  (pid 20711)
+Compiled application.js  (258ms)  (pid 20711)
+Completed 200 OK in 386ms (Views: 307.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.1.152 at 2014-03-28 14:52:08 +0800
+Served asset /application.css - 200 OK (4ms)
+
+
+Started GET "/assets/public_accounts.css?body=1" for 192.168.1.152 at 2014-03-28 14:52:08 +0800
+Served asset /public_accounts.css - 200 OK (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 192.168.1.152 at 2014-03-28 14:52:08 +0800
+Served asset /scaffolds.css - 200 OK (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.1.152 at 2014-03-28 14:52:08 +0800
+Served asset /jquery.js - 200 OK (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.1.152 at 2014-03-28 14:52:08 +0800
+Served asset /jquery_ujs.js - 200 OK (1ms)
+
+
+Started GET "/assets/public_accounts.js?body=1" for 192.168.1.152 at 2014-03-28 14:52:08 +0800
+Served asset /public_accounts.js - 200 OK (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 192.168.1.152 at 2014-03-28 14:52:08 +0800
+Served asset /application.js - 200 OK (5ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/diymenus" for 192.168.1.152 at 2014-03-28 15:31:31 +0800
+Connecting to database specified by database.yml
+
+ArgumentError (wrong number of arguments (3 for 1..2)):
+  app/models/diymenu.rb:9:in `<class:Diymenu>'
+  app/models/diymenu.rb:1:in `<top (required)>'
+  app/controllers/diymenus_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.3ms)
+
+
+Started GET "/diymenus" for 192.168.1.152 at 2014-03-28 15:34:42 +0800
+Connecting to database specified by database.yml
+Processing by DiymenusController#index as HTML
+Completed 500 Internal Server Error in 41ms
+
+ActiveRecord::StatementInvalid (Could not find table 'diymenus'):
+  app/controllers/diymenus_controller.rb:5:in `index'
+
+
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.4ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreatePublicAccounts (20140328060636)
+Migrating to AddWeixinSecretKeyAndWeixinTokenToPublicAccounts (20140328060646)
+Migrating to CreateDiymenus (20140328071340)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "diymenus" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "public_account_id" integer, "parent_id" integer, "name" varchar(255), "key" varchar(255), "is_show" boolean, "url" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.6ms)[0m  [1mCREATE INDEX "index_diymenus_on_public_account_id" ON "diymenus" ("public_account_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_diymenus_on_parent_id" ON "diymenus" ("parent_id")
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_diymenus_on_key" ON "diymenus" ("key")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140328071340')
+  [1m[36m (19.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+
+
+Started GET "/diymenus" for 192.168.1.152 at 2014-03-28 15:34:59 +0800
+Connecting to database specified by database.yml
+Processing by DiymenusController#index as HTML
+  [1m[36mDiymenu Load (0.1ms)[0m  [1mSELECT "diymenus".* FROM "diymenus" [0m
+  Rendered diymenus/index.html.erb within layouts/application (2.0ms)
+Compiled diymenus.css  (4ms)  (pid 21016)
+Compiled application.css  (8ms)  (pid 21016)
+Compiled diymenus.js  (96ms)  (pid 21016)
+Compiled application.js  (102ms)  (pid 21016)
+Completed 200 OK in 244ms (Views: 191.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.1.152 at 2014-03-28 15:35:00 +0800
+Served asset /application.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/diymenus.css?body=1" for 192.168.1.152 at 2014-03-28 15:35:00 +0800
+Served asset /diymenus.css - 200 OK (1ms)
+
+
+Started GET "/assets/public_accounts.css?body=1" for 192.168.1.152 at 2014-03-28 15:35:00 +0800
+Served asset /public_accounts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.1.152 at 2014-03-28 15:35:00 +0800
+Served asset /jquery.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 192.168.1.152 at 2014-03-28 15:35:00 +0800
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.1.152 at 2014-03-28 15:35:00 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/diymenus.js?body=1" for 192.168.1.152 at 2014-03-28 15:35:00 +0800
+Served asset /diymenus.js - 200 OK (2ms)
+
+
+Started GET "/assets/public_accounts.js?body=1" for 192.168.1.152 at 2014-03-28 15:35:00 +0800
+Served asset /public_accounts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 192.168.1.152 at 2014-03-28 15:35:00 +0800
+Served asset /application.js - 304 Not Modified (6ms)
+
+
+Started GET "/diymenus/new" for 192.168.1.152 at 2014-03-28 15:38:22 +0800
+Processing by DiymenusController#new as HTML
+  Rendered diymenus/_form.html.erb (64.8ms)
+  Rendered diymenus/new.html.erb within layouts/application (84.8ms)
+Completed 200 OK in 106ms (Views: 92.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/diymenus" for 192.168.1.152 at 2014-03-28 15:38:33 +0800
+Processing by DiymenusController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7gXWI5cdTjGkvjhzL+TWLGHePM7xoR/nAzMOqoQH1BM=", "diymenu"=>{"public_account_id"=>"1", "parent_id"=>"1", "name"=>"111", "key"=>"", "is_show"=>"1", "url"=>""}, "commit"=>"Create Diymenu"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (5.2ms)[0m  [1mINSERT INTO "diymenus" ("created_at", "is_show", "key", "name", "parent_id", "public_account_id", "updated_at", "url") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 28 Mar 2014 07:38:33 UTC +00:00], ["is_show", true], ["key", ""], ["name", "111"], ["parent_id", 1], ["public_account_id", 1], ["updated_at", Fri, 28 Mar 2014 07:38:33 UTC +00:00], ["url", ""]]
+  [1m[35m (7.9ms)[0m  commit transaction
+Redirected to http://192.168.1.153:3000/diymenus/1
+Completed 302 Found in 20ms (ActiveRecord: 13.3ms)
+
+
+Started GET "/diymenus/1" for 192.168.1.152 at 2014-03-28 15:38:33 +0800
+Processing by DiymenusController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDiymenu Load (0.0ms)[0m  [1mSELECT "diymenus".* FROM "diymenus" WHERE "diymenus"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered diymenus/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 12ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/diymenus" for 192.168.1.152 at 2014-03-28 15:38:35 +0800
+Processing by DiymenusController#index as HTML
+  [1m[35mDiymenu Load (0.3ms)[0m  SELECT "diymenus".* FROM "diymenus" 
+  Rendered diymenus/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 16ms (Views: 13.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/diymenus/1" for 192.168.1.152 at 2014-03-28 15:38:37 +0800
+Processing by DiymenusController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDiymenu Load (0.2ms)[0m  [1mSELECT "diymenus".* FROM "diymenus" WHERE "diymenus"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered diymenus/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 13ms (Views: 11.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/diymenus" for 192.168.1.152 at 2014-03-28 15:38:38 +0800
+Processing by DiymenusController#index as HTML
+  [1m[35mDiymenu Load (0.3ms)[0m  SELECT "diymenus".* FROM "diymenus" 
+  Rendered diymenus/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 10ms (Views: 7.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/diymenus/generate_menu" for 192.168.1.152 at 2014-03-28 15:56:36 +0800
+Connecting to database specified by database.yml
+Processing by DiymenusController#generate_menu as HTML
+  [1m[36mPublicAccount Load (0.1ms)[0m  [1mSELECT "public_accounts".* FROM "public_accounts" LIMIT 1[0m
+Completed 500 Internal Server Error in 60ms
+
+NoMethodError (undefined method `app_key' for #<PublicAccount:0x0000000454b3a8>):
+  app/controllers/diymenus_controller.rb:87:in `generate_menu'
+
+
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.2ms)
+
+
+Started GET "/diymenus/generate_menu" for 192.168.1.152 at 2014-03-28 16:03:01 +0800
+Connecting to database specified by database.yml
+Processing by DiymenusController#generate_menu as HTML
+  [1m[36mPublicAccount Load (0.1ms)[0m  [1mSELECT "public_accounts".* FROM "public_accounts" LIMIT 1[0m
+Completed 500 Internal Server Error in 69ms
+
+NameError (uninitialized constant PublicAccount::Jbuilder):
+  app/models/public_account.rb:11:in `build_menu'
+  app/controllers/diymenus_controller.rb:88:in `generate_menu'
+
+
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.0ms)
+
+
+Started GET "/diymenus/generate_menu" for 192.168.1.152 at 2014-03-28 16:04:04 +0800
+Processing by DiymenusController#generate_menu as HTML
+Completed 500 Internal Server Error in 3ms
+
+LoadError (cannot load such file -- jbuilder):
+  app/models/public_account.rb:2:in `<class:PublicAccount>'
+  app/models/public_account.rb:1:in `<top (required)>'
+  app/controllers/diymenus_controller.rb:86:in `generate_menu'
+
+
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.5ms)
+
+
+Started GET "/diymenus/generate_menu" for 192.168.1.152 at 2014-03-28 16:04:14 +0800
+Processing by DiymenusController#generate_menu as HTML
+  [1m[35mPublicAccount Load (0.1ms)[0m  SELECT "public_accounts".* FROM "public_accounts" LIMIT 1
+Completed 500 Internal Server Error in 20ms
+
+NameError (uninitialized constant PublicAccount::Jbuilder):
+  app/models/public_account.rb:11:in `build_menu'
+  app/controllers/diymenus_controller.rb:88:in `generate_menu'
+
+
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.0ms)
+
+
+Started GET "/diymenus/generate_menu" for 192.168.1.152 at 2014-03-28 16:04:15 +0800
+Processing by DiymenusController#generate_menu as HTML
+  [1m[36mPublicAccount Load (0.4ms)[0m  [1mSELECT "public_accounts".* FROM "public_accounts" LIMIT 1[0m
+Completed 500 Internal Server Error in 4ms
+
+NameError (uninitialized constant PublicAccount::Jbuilder):
+  app/models/public_account.rb:11:in `build_menu'
+  app/controllers/diymenus_controller.rb:88:in `generate_menu'
+
+
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.6ms)
+
+
+Started GET "/diymenus/generate_menu" for 192.168.1.152 at 2014-03-28 16:08:19 +0800
+Connecting to database specified by database.yml
+Processing by DiymenusController#generate_menu as HTML
+  [1m[36mPublicAccount Load (0.1ms)[0m  [1mSELECT "public_accounts".* FROM "public_accounts" LIMIT 1[0m
+  [1m[35mDiymenu Load (0.2ms)[0m  SELECT "diymenus".* FROM "diymenus" WHERE "diymenus"."public_account_id" = 1
+  [1m[36mDiymenu Load (0.2ms)[0m  [1mSELECT "diymenus".* FROM "diymenus" WHERE "diymenus"."parent_id" = 1[0m
+Completed 500 Internal Server Error in 385ms
+
+NoMethodError (undefined method `set_error_message' for #<DiymenusController:0x0000000495fe30>):
+  app/controllers/diymenus_controller.rb:90:in `generate_menu'
+
+
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /home/rails/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.3ms)

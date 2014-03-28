@@ -1,0 +1,41 @@
+<%= form_for(@diymenu) do |f| %>
+  <% if @diymenu.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@diymenu.errors.count, "error") %> prohibited this diymenu from being saved:</h2>
+
+      <ul>
+      <% @diymenu.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :public_account_id %><br />
+    <%= f.number_field :public_account_id %>
+  </div>
+  <div class="field">
+    <%= f.label :parent_id %><br />
+    <%= f.number_field :parent_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :key %><br />
+    <%= f.text_field :key %>
+  </div>
+  <div class="field">
+    <%= f.label :is_show %><br />
+    <%= f.check_box :is_show %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
